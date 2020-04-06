@@ -4,6 +4,10 @@
   "main": "index.js",
   "author": "Tony Augusto Luz <tony_luzsilva@hotmail.com>",
   "license": "MIT",
+  "scripts": {
+    "test": "jest --passWithNoTests",
+    "test:staged": "jest --passWithNoTests"
+  },
   "devDependencies": {
     "@types/jest": "^25.2.1",
     "@types/node": "^13.11.0",
