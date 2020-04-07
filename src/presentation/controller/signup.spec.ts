@@ -15,6 +15,15 @@ const makeEmailValidatorWithError = (): EmailValidator => {
   return new EmailValidatorStub()
 }
 
+const makeAddAccountWithError = (): AddAccount => {
+  class AddAccountStub implements AddAccount {
+    add (account: AddAccountModel): AccountModel {
+      throw new Error()
+    }
+  }
+  return new AddAccountStub()
+}
+
 const makeEmailValidator = (): EmailValidator => {
   class EmailValidatorStub implements EmailValidator {
     isValid (email: string): boolean {
@@ -193,5 +202,22 @@ describe('SignUp Controller', () => {
       email: 'any_email@mail.com',
       password: 'any_password'
     })
+  })
+
+  test('should return 500 if AddAccount throws', () => {
+    const emailValidatorStub = makeEmailValidator()
+    const addAccountStub = makeAddAccountWithError()
+    const sut = new SignUpController(emailValidatorStub, addAccountStub)
+    const httpRequest = ({
+      body: {
+        name: 'any_name',
+        email: 'any_email@mail.com',
+        password: 'any_password',
+        passwordConfirmation: 'any_password'
+      }
+    })
+    const httpResponse = sut.handle(httpRequest)
+    expect(httpResponse.statusCode).toBe(500)
+    expect(httpResponse.body).toEqual(new ServerError())
   })
 })
