@@ -5,7 +5,7 @@
   "author": "Tony Augusto Luz <tony_luzsilva@hotmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "jest --passWithNoTests",
+    "test": "jest --watchAll --passWithNoTests",
     "test:staged": "jest --passWithNoTests"
   },
   "devDependencies": {
