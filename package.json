@@ -32,6 +32,7 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
+    "@databases/pg-test": "^1.0.3",
     "bcrypt": "^4.0.1",
     "validator": "^13.0.0"
   }
