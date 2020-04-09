@@ -5,7 +5,7 @@ module.exports = [
     host: 'localhost',
     username: 'postgres',
     password: 'docker',
-    database: 'school-ts',
+    database: 'api-school',
     synchronize: true,
     logging: false,
     entities: [
@@ -29,7 +29,7 @@ module.exports = [
     host: 'localhost',
     username: 'postgres',
     password: 'docker',
-    database: 'test-typeorm',
+    database: 'api-school-test',
     synchronize: true,
     logging: false,
     dropSchema: true,
