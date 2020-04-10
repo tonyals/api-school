@@ -7,6 +7,7 @@ module.exports = [
     password: 'docker',
     database: 'api-school',
     synchronize: true,
+    dropSchema: true,
     logging: false,
     entities: [
       'src/entity/**/*.ts'
@@ -24,12 +25,9 @@ module.exports = [
     }
   },
   {
-    name: 'test',
-    type: 'postgres',
-    host: 'localhost',
-    username: 'postgres',
-    password: 'docker',
-    database: 'api-school-test',
+    name: 'sqlite_tests',
+    type: 'sqlite',
+    database: './sqlite_tests.sqlite',
     synchronize: true,
     logging: false,
     entities: [

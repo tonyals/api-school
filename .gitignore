@@ -1,3 +1,4 @@
 node_modules
 coverage
 tesconnection.txt
+sqlite_tests.sqlite

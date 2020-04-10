@@ -5,13 +5,13 @@
   "author": "Tony Augusto Luz <tony_luzsilva@hotmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node src/main/server.ts",
-    "test": "jest --passWithNoTests --silent --noStackTrace --runInBand --detectOpenHandles",
-    "test:verbose": "jest --passWithNoTests --runInBand",
-    "test:unit": "NODE_ENV=test yarn test -- --watch -c jest-unit-config.js",
-    "test:integration": "NODE_ENV=test yarn test -- --watch -c jest-integration-config.js",
-    "test:staged": "NODE_ENV=test yarn test -- --findRelatedTests",
-    "test:ci": "yarn test -- --coverage"
+    "start": "NODE_ENV=development ts-node src/main/server.ts",
+    "test": "NODE_ENV=sqlite_tests jest --passWithNoTests --silent --noStackTrace --runInBand --detectOpenHandles",
+    "test:verbose": "NODE_ENV=sqlite_tests jest --passWithNoTests --runInBand",
+    "test:unit": "NODE_ENV=sqlite_tests yarn test -- --watch -c jest-unit-config.js",
+    "test:integration": "NODE_ENV=sqlite_tests yarn test -- --watch -c jest-integration-config.js",
+    "test:staged": "NODE_ENV=sqlite_tests yarn test -- --findRelatedTests",
+    "test:ci": "NODE_ENV=sqlite_tests yarn test -- --coverage"
   },
   "devDependencies": {
     "@types/bcrypt": "^3.0.0",
@@ -31,6 +31,7 @@
     "husky": "^4.2.3",
     "jest": "^25.2.7",
     "lint-staged": "^10.1.2",
+    "sqlite3": "^4.1.1",
     "sucrase": "^3.13.0",
     "supertest": "^4.0.2",
     "ts-jest": "^25.3.1",

@@ -6,12 +6,12 @@ describe('SignUp Routes', () => {
   beforeAll(async () => {
     // const connectionOptions = await getConnectionOptions('test')
     // return await createConnection(connectionOptions)
-    const connectionOptions = await getConnectionOptions('test')
+    const connectionOptions = await getConnectionOptions(process.env.NODE_ENV)
     return await createConnection({ ...connectionOptions, name: 'default' })
   })
 
   afterAll(() => {
-    return getConnection('test').close
+    return getConnection(process.env.NODE_ENV).close
   })
 
   test('should return an account on success', async () => {

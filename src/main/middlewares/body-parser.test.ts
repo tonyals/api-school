@@ -6,12 +6,12 @@ describe('Body parser middleware', () => {
   beforeAll(async () => {
     // const connectionOptions = await getConnectionOptions('test')
     // return await createConnection(connectionOptions)
-    const connectionOptions = await getConnectionOptions('test')
+    const connectionOptions = await getConnectionOptions(process.env.NODE_ENV)
     return await createConnection({ ...connectionOptions, name: 'default' })
   })
 
   afterAll(() => {
-    return getConnection('test').close
+    return getConnection(process.env.NODE_ENV).close
   })
   test('should parse body as json', async () => {
     app.post('/test_body_parser', (req, res) => {

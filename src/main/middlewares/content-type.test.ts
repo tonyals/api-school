@@ -6,12 +6,12 @@ describe('Content Type Middleware', () => {
   beforeAll(async () => {
     // const connectionOptions = await getConnectionOptions('test')
     // return await createConnection(connectionOptions)
-    const connectionOptions = await getConnectionOptions('test')
+    const connectionOptions = await getConnectionOptions(process.env.NODE_ENV)
     return await createConnection({ ...connectionOptions, name: 'default' })
   })
 
   afterAll(() => {
-    return getConnection('test').close
+    return getConnection(process.env.NODE_ENV).close
   })
   test('Should return default content type as json', async () => {
     app.get('/test_content_type', (req, res) => {

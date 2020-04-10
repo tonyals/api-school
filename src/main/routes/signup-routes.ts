@@ -4,7 +4,7 @@ import { makeSignUpController } from '../factories/signup'
 import { adaptRoute } from '../adapters/express-routes-adapter'
 
 export default async (router: Router): Promise<void> => {
-  const connectionOptions = await getConnectionOptions('development')
+  const connectionOptions = await getConnectionOptions(process.env.NODE_ENV)
   await createConnection({ ...connectionOptions, name: 'default' })
   router.post('/signup', adaptRoute(makeSignUpController()))
 }
