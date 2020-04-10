@@ -1,7 +1,18 @@
 import request from 'supertest'
 import app from '../config/app'
+import { createConnection, getConnectionOptions, getConnection } from 'typeorm'
 
 describe('Content Type Middleware', () => {
+  beforeAll(async () => {
+    // const connectionOptions = await getConnectionOptions('test')
+    // return await createConnection(connectionOptions)
+    const connectionOptions = await getConnectionOptions('test')
+    return await createConnection({ ...connectionOptions, name: 'default' })
+  })
+
+  afterAll(() => {
+    return getConnection('test').close
+  })
   test('Should return default content type as json', async () => {
     app.get('/test_content_type', (req, res) => {
       res.send('')

@@ -1,7 +1,18 @@
 import request from 'supertest'
 import app from '../config/app'
+import { createConnection, getConnectionOptions, getConnection } from 'typeorm'
 
 describe('Cors middleware', () => {
+  beforeAll(async () => {
+    // const connectionOptions = await getConnectionOptions('test')
+    // return await createConnection(connectionOptions)
+    const connectionOptions = await getConnectionOptions('test')
+    return await createConnection({ ...connectionOptions, name: 'default' })
+  })
+
+  afterAll(() => {
+    return getConnection('test').close
+  })
   test('should enable cors', async () => {
     app.get('/test_cors', (req, res) => {
       res.send()
