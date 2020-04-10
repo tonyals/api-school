@@ -1,13 +1,13 @@
 import request from 'supertest'
 import app from '../config/app'
-import { createConnection, getConnectionOptions, getConnection } from 'typeorm'
+import { CreateConnectionPostgres } from '../../infra/db/postgres/create-connection-postgres'
+import { getConnection } from 'typeorm'
 
 describe('Body parser middleware', () => {
   beforeAll(async () => {
-    // const connectionOptions = await getConnectionOptions('test')
-    // return await createConnection(connectionOptions)
-    const connectionOptions = await getConnectionOptions(process.env.NODE_ENV)
-    return await createConnection({ ...connectionOptions, name: 'default' })
+    // const connectionOptions = await getConnectionOptions(process.env.NODE_ENV)
+    // return await createConnection({ ...connectionOptions, name: 'default' })
+    await CreateConnectionPostgres.connect()
   })
 
   afterAll(() => {

@@ -1,13 +1,11 @@
 import request from 'supertest'
-import { getConnectionOptions, createConnection, getConnection } from 'typeorm'
+import { getConnection } from 'typeorm'
+import { CreateConnectionPostgres } from '../../infra/db/postgres/create-connection-postgres'
 import app from '../config/app'
 
 describe('SignUp Routes', () => {
   beforeAll(async () => {
-    // const connectionOptions = await getConnectionOptions('test')
-    // return await createConnection(connectionOptions)
-    const connectionOptions = await getConnectionOptions(process.env.NODE_ENV)
-    return await createConnection({ ...connectionOptions, name: 'default' })
+    await CreateConnectionPostgres.connect()
   })
 
   afterAll(() => {

@@ -1,10 +1,10 @@
 import { AccountPostgresRepository } from './account-save'
-import { getConnectionOptions, createConnection, getConnection } from 'typeorm'
+import { getConnection } from 'typeorm'
+import { CreateConnectionPostgres } from '../create-connection-postgres'
 
 describe('Account Postgres Repository', () => {
   beforeAll(async () => {
-    const connectionOptions = await getConnectionOptions(process.env.NODE_ENV)
-    return await createConnection({ ...connectionOptions, name: 'default' })
+    await CreateConnectionPostgres.connect()
   })
 
   afterAll(() => {
