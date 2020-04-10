@@ -32,7 +32,6 @@ module.exports = [
     database: 'api-school-test',
     synchronize: true,
     logging: false,
-    dropSchema: true,
     entities: [
       'src/entity/**/*.ts'
     ],

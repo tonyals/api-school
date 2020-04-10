@@ -1,9 +1,14 @@
 import { AccountPostgresRepository } from './account-save'
-import { CreateTypeOrmConn } from '../create-typeorm-connection'
+import { getConnectionOptions, createConnection, getConnection } from 'typeorm'
 
 describe('Account Postgres Repository', () => {
   beforeAll(async () => {
-    await CreateTypeOrmConn.connect()
+    const connectionOptions = await getConnectionOptions('test')
+    return await createConnection({ ...connectionOptions, name: 'default' })
+  })
+
+  afterAll(() => {
+    return getConnection('test').close
   })
 
   test('should return an account on success', async () => {

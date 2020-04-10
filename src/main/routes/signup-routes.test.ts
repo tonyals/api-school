@@ -1,10 +1,17 @@
 import request from 'supertest'
+import { getConnectionOptions, createConnection, getConnection } from 'typeorm'
 import app from '../config/app'
-import { CreateTypeOrmConn } from '../../infra/db/postgres/create-typeorm-connection'
 
 describe('SignUp Routes', () => {
   beforeAll(async () => {
-    await CreateTypeOrmConn.connect()
+    // const connectionOptions = await getConnectionOptions('test')
+    // return await createConnection(connectionOptions)
+    const connectionOptions = await getConnectionOptions('test')
+    return await createConnection({ ...connectionOptions, name: 'default' })
+  })
+
+  afterAll(() => {
+    return getConnection('test').close
   })
 
   test('should return an account on success', async () => {
