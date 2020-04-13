@@ -3,3 +3,4 @@ coverage
 tesconnection.txt
 sqlite_tests.sqlite
 ormconfig.js
+Login.pdf
