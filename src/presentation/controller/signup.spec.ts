@@ -18,7 +18,7 @@ const makeEmailValidatorWithError = (): EmailValidator => {
 const makeAddAccountWithError = (): AddAccount => {
   class AddAccountStub implements AddAccount {
     async add (account: AddAccountModel): Promise<AccountModel> {
-      return await new Promise((resolve, reject) => reject(new ServerError()))
+      return await new Promise((resolve, reject) => reject(new ServerError('Server error')))
     }
   }
   return new AddAccountStub()
@@ -182,7 +182,7 @@ describe('SignUp Controller', () => {
     })
     const httpResponse = await sut.handle(httpRequest)
     expect(httpResponse.statusCode).toBe(500)
-    expect(httpResponse.body).toEqual(new ServerError())
+    expect(httpResponse.body).toEqual(new ServerError('Server error'))
   })
 
   test('should call AddAccount with correct values', async () => {
@@ -218,7 +218,7 @@ describe('SignUp Controller', () => {
     })
     const httpResponse = await sut.handle(httpRequest)
     expect(httpResponse.statusCode).toBe(500)
-    expect(httpResponse.body).toEqual(new ServerError())
+    expect(httpResponse.body).toEqual(new ServerError('Server error'))
   })
 
   test('should return 200 if valid data is provided', async () => {
