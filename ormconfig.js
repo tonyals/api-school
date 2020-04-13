@@ -7,7 +7,7 @@ module.exports = [
     password: 'docker',
     database: 'api-school',
     synchronize: true,
-    dropSchema: true,
+    dropSchema: false,
     logging: false,
     entities: [
       'src/entity/**/*.ts'
