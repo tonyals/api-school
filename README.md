@@ -17,10 +17,11 @@ Backend sendo desenvolvido em NodeJS com TyperScript aplicando conceitos de TDD 
 podendo, portanto, sofrer alterações em sua estrutura conforme novos conceitos forem sendo estudados;
 * Sugestões de melhoria ou auxílio no desenvolvimento são bem-vindos.
 
-## Check-list de implementações iniciais:
-> [x] = iniciadas | [ ] = não iniciadas
+## Check-list de implementações concluídas:
+> [x] = concluídas | [ ] = em desenvolvimento
 
-- [ ] Persistência de novos usuários/administradores no banco de dados;
+- [x] Persistência de novos usuários/administradores no banco de dados;
+- [ ] Rotas criação de rotas privadas disponíveis somente para determinada categoria de usuários;
 - [ ] Persistência de novos professores no banco de dados;
 - [ ] Persistência de novos alunos no banco de dados;
 - [ ] Persistência de novos cursos no banco de dados;
