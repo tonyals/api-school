@@ -1,5 +1,4 @@
 import { SignUpController } from '../../presentation/controller/signup/signup'
-import { EmailValidatorAdapter } from '../../utils/email-validator-adapter'
 import { DbAddAccount } from '../../data/usecases/db-add-account/db-add-account'
 import { BcryptAdapter } from '../../infra/criptography/bcrypt-adapter'
 import { AccountPostgresRepository } from '../../infra/db/postgres/account-repository/account-save'
@@ -13,10 +12,9 @@ export const makeSignUpController = async (): Promise<Controller> => {
   await CreateConnectionPostgres.connect()
   const salt = 12
   const logMongoRepository = new LogMongoRepository()
-  const emailValidator = new EmailValidatorAdapter()
   const encrypter = new BcryptAdapter(salt)
   const accountPostgresRepository = new AccountPostgresRepository()
   const dbAddAccount = new DbAddAccount(encrypter, accountPostgresRepository)
-  const signUpController = new SignUpController(emailValidator, dbAddAccount, makeSignUpValidation())
+  const signUpController = new SignUpController(dbAddAccount, makeSignUpValidation())
   return new LogControllerDecorator(signUpController, logMongoRepository)
 }
