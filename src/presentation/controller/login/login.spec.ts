@@ -3,7 +3,7 @@ import { LoginController } from './login'
 import { badRequest, serverError, unauthorized, success } from '../../helpers/http/http-helper'
 import { MissingParamError } from '../../errors/missing-param-error'
 import { HttpRequest } from '../../protocols/http'
-import { Validation } from '../../helpers/validators/validation'
+import { Validation } from '../../protocols/validation'
 
 const makeValidation = (): Validation => {
   class ValidationStub implements Validation {

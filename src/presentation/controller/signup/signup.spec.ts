@@ -5,7 +5,7 @@ import { AddAccount, AddAccountModel } from '../../../domain/usecases/add-accoun
 import { AccountModel } from '../../../domain/models/account'
 import { HttpRequest } from '../../protocols/http'
 import { success, serverError, badRequest } from '../../helpers/http/http-helper'
-import { Validation } from '../../helpers/validators/validation'
+import { Validation } from '../../protocols/validation'
 
 const makeAddAccountWithError = (): AddAccount => {
   class AddAccountStub implements AddAccount {
