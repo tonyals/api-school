@@ -4,7 +4,7 @@ import { ServerError } from '../../errors/server-error'
 import { AddAccount, AddAccountModel } from '../../../domain/usecases/add-account'
 import { AccountModel } from '../../../domain/models/account'
 import { HttpRequest } from '../../protocols/http'
-import { success, serverError, badRequest } from '../../helpers/http-helper'
+import { success, serverError, badRequest } from '../../helpers/http/http-helper'
 import { Validation } from '../../helpers/validators/validation'
 
 const makeAddAccountWithError = (): AddAccount => {

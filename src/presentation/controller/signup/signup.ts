@@ -1,5 +1,5 @@
 import { HttpRequest, HttpResponse } from '../../protocols/http'
-import { badRequest, serverError, success } from '../../helpers/http-helper'
+import { badRequest, serverError, success } from '../../helpers/http/http-helper'
 import { Controller } from '../../protocols/controller'
 import { AddAccount } from '../../../domain/usecases/add-account'
 import { Validation } from '../../helpers/validators/validation'
