@@ -15,6 +15,9 @@ export class User extends BaseEntity implements AccountModel {
   @Column({ type: 'varchar', length: 100, nullable: false })
   password: string;
 
+  @Column({ type: 'varchar', length: 150, nullable: true })
+  accessToken: string;
+
   @Column({ default: false })
   isAdmin: boolean;
 
