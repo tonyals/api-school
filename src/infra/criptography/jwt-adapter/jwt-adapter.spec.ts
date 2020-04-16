@@ -19,4 +19,13 @@ describe('Jwt Adapter', () => {
     const accessToken = await sut.encrypt(0)
     expect(accessToken).toBe('any_token')
   })
+
+  test('should throw if sign throws', async () => {
+    const sut = new JwtAdapter('secret')
+    jest.spyOn(jwt, 'sign').mockImplementationOnce(() => {
+      throw new Error()
+    })
+    const promise = sut.encrypt(0)
+    await expect(promise).rejects.toThrow()
+  })
 })
