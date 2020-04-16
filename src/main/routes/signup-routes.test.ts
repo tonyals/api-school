@@ -2,13 +2,15 @@ import request from 'supertest'
 import { getConnection } from 'typeorm'
 import { CreateConnectionPostgres } from '../../infra/db/postgres/create-connection-postgres'
 import app from '../config/app'
+import { User } from '../../entity/User'
 
 describe('SignUp Routes', () => {
   beforeAll(async () => {
     await CreateConnectionPostgres.connect()
   })
 
-  afterAll(() => {
+  afterAll(async () => {
+    await User.delete({})
     return getConnection(process.env.NODE_ENV).close
   })
 
