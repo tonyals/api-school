@@ -54,4 +54,19 @@ describe('Account Postgres Repository', () => {
     const account = await sut.loadByEmail('any_email@mail.com')
     expect(account).toBeFalsy()
   })
+
+  test('should update the account accessToken on updateAccessToken success', async () => {
+    const sut = new AccountPostgresRepository()
+    const user = await sut.add({
+      name: 'any_name',
+      email: 'any_email@mail.com',
+      password: 'any_password',
+      isAdmin: true || false
+    })
+    expect(user.accessToken).toBeFalsy()
+    await sut.updateAccessToken(user.id, 'any_token')
+    const account = await User.findOne({ id: user.id })
+    expect(account).toBeTruthy()
+    expect(account.accessToken).toBe('any_token')
+  })
 })
