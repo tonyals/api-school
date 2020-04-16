@@ -1,6 +1,6 @@
 import { SignUpController } from '../../../presentation/controller/signup/signup'
 import { DbAddAccount } from '../../../data/usecases/db-add-account/db-add-account'
-import { BcryptAdapter } from '../../../infra/criptography/bcrypt-adapter'
+import { BcryptAdapter } from '../../../infra/criptography/bcrypt-adapter/bcrypt-adapter'
 import { AccountPostgresRepository } from '../../../infra/db/postgres/account-repository/account-save'
 import { LogMongoRepository } from '../../../infra/db/mongodb/log-repository/log'
 import { CreateConnectionPostgres } from '../../../infra/db/postgres/create-connection-postgres'
