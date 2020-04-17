@@ -1,8 +1,8 @@
 import request from 'supertest'
 import { getConnection } from 'typeorm'
-import { CreateConnectionPostgres } from '../../infra/db/postgres/create-connection-postgres'
+import { CreateConnectionPostgres } from '../../infra/db/postgres/helpers/postgres-connect-helper'
 import app from '../config/app'
-import { User } from '../../entity/User'
+import { User } from '../../infra/db/entities/User'
 import { hash } from 'bcrypt'
 
 describe('Login Routes', () => {

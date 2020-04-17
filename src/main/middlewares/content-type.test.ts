@@ -1,7 +1,7 @@
 import request from 'supertest'
 import app from '../config/app'
 import { getConnection } from 'typeorm'
-import { CreateConnectionPostgres } from '../../infra/db/postgres/create-connection-postgres'
+import { CreateConnectionPostgres } from '../../infra/db/postgres/helpers/postgres-connect-helper'
 
 describe('Content Type Middleware', () => {
   beforeAll(async () => {

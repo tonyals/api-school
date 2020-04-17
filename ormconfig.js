@@ -10,7 +10,7 @@ module.exports = [
     dropSchema: false,
     logging: false,
     entities: [
-      'src/entity/**/*.ts'
+      'src/infra/db/entities/**/*.ts'
     ],
     migrations: [
       'src/migration/**/*.ts'
@@ -19,7 +19,7 @@ module.exports = [
       'src/subscriber/**/*.ts'
     ],
     cli: {
-      entitiesDir: 'src/entity',
+      entitiesDir: 'src/infra/db/entities',
       migrationsDir: 'src/migration',
       subscribersDir: 'src/subscriber'
     }
@@ -31,7 +31,7 @@ module.exports = [
     synchronize: true,
     logging: false,
     entities: [
-      'src/entity/**/*.ts'
+      'src/infra/db/entities/**/*.ts'
     ],
     migrations: [
       'src/migration/**/*.ts'
@@ -40,7 +40,7 @@ module.exports = [
       'src/subscriber/**/*.ts'
     ],
     cli: {
-      entitiesDir: 'src/entity',
+      entitiesDir: 'src/infra/db/entities',
       migrationsDir: 'src/migration',
       subscribersDir: 'src/subscriber'
     }

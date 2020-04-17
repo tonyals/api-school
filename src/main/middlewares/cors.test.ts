@@ -1,6 +1,6 @@
 import request from 'supertest'
 import app from '../config/app'
-import { CreateConnectionPostgres } from '../../infra/db/postgres/create-connection-postgres'
+import { CreateConnectionPostgres } from '../../infra/db/postgres/helpers/postgres-connect-helper'
 import { getConnection } from 'typeorm'
 
 describe('Cors middleware', () => {

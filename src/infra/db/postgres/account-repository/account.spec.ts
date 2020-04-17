@@ -1,7 +1,7 @@
 import { AccountPostgresRepository } from './account-save'
 import { getConnection } from 'typeorm'
-import { CreateConnectionPostgres } from '../create-connection-postgres'
-import { User } from '../../../../entity/User'
+import { CreateConnectionPostgres } from '../helpers/postgres-connect-helper'
+import { User } from '../../entities/User'
 
 describe('Account Postgres Repository', () => {
   beforeAll(async () => {
