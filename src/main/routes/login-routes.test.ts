@@ -4,7 +4,7 @@ import { CreateConnectionPostgres } from '../../infra/db/postgres/create-connect
 import app from '../config/app'
 import { User } from '../../entity/User'
 
-describe('SignUp Routes', () => {
+describe('Login Routes', () => {
   beforeAll(async () => {
     await CreateConnectionPostgres.connect()
   })
@@ -14,16 +14,18 @@ describe('SignUp Routes', () => {
     return getConnection(process.env.NODE_ENV).close
   })
 
-  test('should return an account on success', async () => {
-    await request(app)
-      .post('/api/signup')
-      .send({
-        name: 'Tony',
-        email: 'valid_email@mail.com',
-        password: 'valid_password',
-        passwordConfirmation: 'valid_password',
-        isAdmin: true || false
-      })
-      .expect(200)
+  describe('POST /signup', () => {
+    test('should return 200 on signup', async () => {
+      await request(app)
+        .post('/api/signup')
+        .send({
+          name: 'Tony',
+          email: 'valid_email@mail.com',
+          password: 'valid_password',
+          passwordConfirmation: 'valid_password',
+          isAdmin: true || false
+        })
+        .expect(200)
+    })
   })
 })
