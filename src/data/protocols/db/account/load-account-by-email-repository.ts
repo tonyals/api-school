@@ -1,4 +1,4 @@
-import { AccountModel } from '../../model/account'
+import { AccountModel } from '../../../model/account'
 
 export interface LoadAccountByEmailRepository {
   loadByEmail (email: string): Promise<AccountModel>

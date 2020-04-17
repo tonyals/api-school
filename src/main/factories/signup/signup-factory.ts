@@ -1,12 +1,12 @@
-import { SignUpController } from '../../../presentation/controller/signup/signup'
+import { SignUpController } from '../../../presentation/controller/signup/signup-controller'
 import { DbAddAccount } from '../../../data/usecases/db-add-account/db-add-account'
 import { BcryptAdapter } from '../../../infra/criptography/bcrypt-adapter/bcrypt-adapter'
 import { AccountPostgresRepository } from '../../../infra/db/postgres/account-repository/account-save'
 import { LogMongoRepository } from '../../../infra/db/mongodb/log-repository/log'
 import { CreateConnectionPostgres } from '../../../infra/db/postgres/create-connection-postgres'
 import { Controller } from '../../../presentation/protocols/controller'
-import { LogControllerDecorator } from '../../decorators/log'
-import { makeSignUpValidation } from './signup-validation'
+import { LogControllerDecorator } from '../../decorators/log-controller-decorator'
+import { makeSignUpValidation } from './signup-validation-factory'
 
 export const makeSignUpController = async (): Promise<Controller> => {
   await CreateConnectionPostgres.connect()

@@ -2,7 +2,7 @@ import { DbAddAccount } from './db-add-account'
 import { Hasher } from '../../protocols/criptography/hasher'
 import { AccountModel } from '../../model/account'
 import { AddAccountModel } from '../../model/add-account'
-import { AddAccountRepository } from '../../protocols/db/add-account-repository'
+import { AddAccountRepository } from '../../protocols/db/account/add-account-repository'
 
 interface SutTYpes {
   sut: DbAddAccount
