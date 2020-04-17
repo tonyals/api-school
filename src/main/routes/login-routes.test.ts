@@ -10,7 +10,7 @@ describe('Login Routes', () => {
     await CreateConnectionPostgres.connect()
   })
 
-  afterEach(async () => {
+  beforeEach(async () => {
     await User.delete({})
   })
 
@@ -50,6 +50,16 @@ describe('Login Routes', () => {
           password: '1234'
         })
         .expect(200)
+    })
+
+    test('should return 401 if login fails', async () => {
+      await request(app)
+        .post('/api/login')
+        .send({
+          email: 'valid_email@mail.com',
+          password: '1234'
+        })
+        .expect(401)
     })
   })
 })
