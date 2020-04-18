@@ -4,9 +4,10 @@ import { ServerError } from '../../errors/server-error'
 import { AddAccount, AddAccountModel } from '../../../domain/usecases/add-account'
 import { AccountModel } from '../../../domain/models/account'
 import { HttpRequest } from '../../protocols/http'
-import { success, serverError, badRequest } from '../../helpers/http/http-helper'
+import { success, serverError, badRequest, forbidden } from '../../helpers/http/http-helper'
 import { Validation } from '../../protocols/validation'
 import { AuthenticationModel, Authentication } from '../../../domain/usecases/authentication'
+import { EmailInUseError } from '../../errors/email-in-use-error'
 
 const makeAddAccountWithError = (): AddAccount => {
   class AddAccountStub implements AddAccount {
@@ -99,6 +100,13 @@ describe('SignUp Controller', () => {
     const sut = new SignUpController(addAccountStub, validationStub, authenticationStub)
     const httpResponse = await sut.handle(makeFakeRequest())
     expect(httpResponse).toEqual(serverError(new ServerError(null)))
+  })
+
+  test('should return 403 if AddAccount returns null', async () => {
+    const { sut, addAccountStub } = makeSut()
+    jest.spyOn(addAccountStub, 'add').mockReturnValueOnce(new Promise(resolve => resolve(null)))
+    const httpResponse = await sut.handle(makeFakeRequest())
+    expect(httpResponse).toEqual(forbidden(new EmailInUseError()))
   })
 
   test('should return 200 if valid data is provided', async () => {
