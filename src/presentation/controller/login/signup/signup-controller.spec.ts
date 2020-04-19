@@ -1,13 +1,13 @@
 import { SignUpController } from './signup-controller'
-import { MissingParamError } from '../../errors/missing-param-error'
-import { ServerError } from '../../errors/server-error'
-import { AddAccount, AddAccountModel } from '../../../domain/usecases/add-account'
-import { AccountModel } from '../../../domain/models/account'
-import { HttpRequest } from '../../protocols/http'
-import { success, serverError, badRequest, forbidden } from '../../helpers/http/http-helper'
-import { Validation } from '../../protocols/validation'
-import { AuthenticationModel, Authentication } from '../../../domain/usecases/authentication'
-import { EmailInUseError } from '../../errors/email-in-use-error'
+import { MissingParamError } from '../../../errors/missing-param-error'
+import { ServerError } from '../../../errors/server-error'
+import { AddAccount, AddAccountModel } from '../../../../domain/usecases/add-account'
+import { AccountModel } from '../../../../domain/models/account'
+import { HttpRequest } from '../../../protocols/http'
+import { success, serverError, badRequest, forbidden } from '../../../helpers/http/http-helper'
+import { Validation } from '../../../protocols/validation'
+import { AuthenticationModel, Authentication } from '../../../../domain/usecases/authentication'
+import { EmailInUseError } from '../../../errors/email-in-use-error'
 
 const makeAddAccountWithError = (): AddAccount => {
   class AddAccountStub implements AddAccount {
