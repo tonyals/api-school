@@ -10,6 +10,8 @@ describe('Survey Routes', () => {
   })
 
   afterAll(async () => {
+    surveyCollection = await MongoHelper.getCollection('surveys')
+    await surveyCollection.deleteMany({})
     await MongoHelper.disconnect()
   })
 
