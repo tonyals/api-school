@@ -112,5 +112,11 @@ describe('Account Postgres Repository', () => {
       expect(account.password).toBe('any_password')
       expect(account.role).toBe('any_role')
     })
+
+    test('should return null if loadByToken fails', async () => {
+      const sut = new AccountPostgresRepository()
+      const account = await sut.loadByToken('any_token')
+      expect(account).toBeFalsy()
+    })
   })
 })
