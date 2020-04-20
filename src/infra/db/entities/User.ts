@@ -21,6 +21,9 @@ export class User extends BaseEntity implements AccountModel {
   @Column({ default: false })
   isAdmin: boolean;
 
+  @Column({ nullable: true })
+  role: string;
+
   @CreateDateColumn()
   createdDate: Date;
 

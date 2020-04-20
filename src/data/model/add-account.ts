@@ -6,6 +6,7 @@ export interface AddAccountModel {
   password: string
   isAdmin?: boolean
   accessToken?: string
+  role?: string
 }
 
 export interface AddAccount {

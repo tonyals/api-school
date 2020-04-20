@@ -5,4 +5,5 @@ export interface AccountModel {
   password: string
   isAdmin?: boolean
   accessToken?: string
+  role?: string
 }

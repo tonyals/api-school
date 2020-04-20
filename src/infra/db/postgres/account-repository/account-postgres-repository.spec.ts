@@ -83,8 +83,8 @@ describe('Account Postgres Repository', () => {
         name: 'any_name',
         email: 'any_email@mail.com',
         password: 'any_password',
-        isAdmin: true,
-        accessToken: 'any_token'
+        accessToken: 'any_token',
+        isAdmin: true || false
       })
       const account = await sut.loadByToken('any_token')
       expect(account).toBeTruthy()
@@ -93,6 +93,24 @@ describe('Account Postgres Repository', () => {
       expect(account.name).toBe('any_name')
       expect(account.email).toBe('any_email@mail.com')
       expect(account.password).toBe('any_password')
+    })
+
+    test('should return an account on loadByToken with role', async () => {
+      const sut = new AccountPostgresRepository()
+      await sut.add({
+        name: 'any_name',
+        email: 'any_email@mail.com',
+        password: 'any_password',
+        accessToken: 'any_token',
+        role: 'any_role'
+      })
+      const account = await sut.loadByToken('any_token', 'any_role')
+      expect(account).toBeTruthy()
+      expect(account.id).toBeTruthy()
+      expect(account.name).toBe('any_name')
+      expect(account.email).toBe('any_email@mail.com')
+      expect(account.password).toBe('any_password')
+      expect(account.role).toBe('any_role')
     })
   })
 })
