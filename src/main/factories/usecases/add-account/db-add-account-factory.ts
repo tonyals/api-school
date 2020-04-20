@@ -1,4 +1,4 @@
-import { AccountPostgresRepository } from '../../../../infra/db/postgres/account-repository/account-save'
+import { AccountPostgresRepository } from '../../../../infra/db/postgres/account-repository/account-postgres-repository'
 import { BcryptAdapter } from '../../../../infra/criptography/bcrypt-adapter/bcrypt-adapter'
 import { AddAccount } from '../../../../data/model/add-account'
 import { DbAddAccount } from '../../../../data/usecases/db-add-account/db-add-account'

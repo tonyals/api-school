@@ -1,6 +1,6 @@
 import env from '../../../config/env'
 import { DbAuthentication } from '../../../../data/usecases/authentication/db-authentication'
-import { AccountPostgresRepository } from '../../../../infra/db/postgres/account-repository/account-save'
+import { AccountPostgresRepository } from '../../../../infra/db/postgres/account-repository/account-postgres-repository'
 import { BcryptAdapter } from '../../../../infra/criptography/bcrypt-adapter/bcrypt-adapter'
 import { JwtAdapter } from '../../../../infra/criptography/jwt-adapter/jwt-adapter'
 import { Authentication } from '../../../../domain/usecases/authentication'
