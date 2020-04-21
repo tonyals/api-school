@@ -10,6 +10,24 @@ import { sign } from 'jsonwebtoken'
 import env from '../config/env'
 
 let surveyCollection: Collection
+
+const makeAccessToken = async (): Promise<string> => {
+  const password = await hash('1234', 12)
+  const newUser = {
+    name: 'Tony Augusto',
+    email: 'valid_email@mail.com',
+    password,
+    role: 'admin'
+  }
+  const res = await User.create(newUser).save()
+  const id = res.id
+  const accessToken = sign({ id }, env.jwtSecret)
+  const user = await User.findOne({ id })
+  user.accessToken = accessToken
+  await user.save()
+  return accessToken
+}
+
 describe('Survey Routes', () => {
   beforeAll(async () => {
     await CreateConnectionPostgres.connect()
@@ -47,19 +65,7 @@ describe('Survey Routes', () => {
     })
 
     test('should return 204 on add survey with valid access token', async () => {
-      const password = await hash('1234', 12)
-      const newUser = {
-        name: 'Tony Augusto',
-        email: 'valid_email@mail.com',
-        password,
-        role: 'admin'
-      }
-      const res = await User.create(newUser).save()
-      const id = res.id
-      const accessToken = sign({ id }, env.jwtSecret)
-      const user = await User.findOne({ id })
-      user.accessToken = accessToken
-      await user.save()
+      const accessToken = await makeAccessToken()
       await request(app)
         .post('/api/surveys')
         .set('x-access-token', accessToken)
@@ -84,18 +90,7 @@ describe('Survey Routes', () => {
     })
 
     test('should return 200 on load surveys with valid access token', async () => {
-      const password = await hash('1234', 12)
-      const newUser = {
-        name: 'Tony Augusto',
-        email: 'valid_email@mail.com',
-        password
-      }
-      const res = await User.create(newUser).save()
-      const id = res.id
-      const accessToken = sign({ id }, env.jwtSecret)
-      const user = await User.findOne({ id })
-      user.accessToken = accessToken
-      await user.save()
+      const accessToken = await makeAccessToken()
       await surveyCollection.insertMany([
         {
           question: 'any_question',
