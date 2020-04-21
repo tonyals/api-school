@@ -5,6 +5,7 @@ export interface AddAccountModel {
   email: string
   password: string
   isAdmin?: boolean
+  role?: string
 }
 
 export interface AddAccount {
