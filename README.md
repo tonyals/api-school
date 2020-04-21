@@ -21,7 +21,7 @@ podendo, portanto, sofrer alterações em sua estrutura conforme novos conceitos
 > [x] = concluídas | [ ] = em desenvolvimento
 
 - [x] Persistência de novos usuários/administradores no banco de dados;
-- [ ] Criação de rotas privadas disponíveis somente para determinada categoria de usuários;
+- [x] Criação de rotas privadas disponíveis somente para determinada categoria de usuários;
 - [ ] Persistência de novos professores no banco de dados;
 - [ ] Persistência de novos alunos no banco de dados;
 - [ ] Persistência de novos cursos no banco de dados;
