@@ -60,7 +60,6 @@ describe('Survey Routes', () => {
       const user = await User.findOne({ id })
       user.accessToken = accessToken
       await user.save()
-      console.log(user)
       await request(app)
         .post('/api/surveys')
         .set('x-access-token', accessToken)

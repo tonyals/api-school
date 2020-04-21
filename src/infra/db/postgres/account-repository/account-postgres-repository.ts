@@ -5,6 +5,7 @@ import { User } from '../../entities/User'
 import { LoadAccountByEmailRepository } from '../../../../data/protocols/db/account/load-account-by-email-repository'
 import { UpdateAccessTokenRepository } from '../../../../data/protocols/db/account/update-access-token-repository'
 import { LoadAccountByTokenRepository } from '../../../../data/protocols/db/account/load-account-by-token-repository'
+import { Brackets } from 'typeorm'
 
 export class AccountPostgresRepository implements AddAccountRepository,
 LoadAccountByEmailRepository, UpdateAccessTokenRepository, LoadAccountByTokenRepository {
@@ -25,7 +26,17 @@ LoadAccountByEmailRepository, UpdateAccessTokenRepository, LoadAccountByTokenRep
   }
 
   async loadByToken (token: string, role?: string): Promise<AccountModel> {
-    const account = await User.findOne({ accessToken: token })
+    // const account = await User.findOne({ accessToken: token })
+    const account = await User.createQueryBuilder('user')
+      .where('user.accessToken = :token', { token: token })
+      .orWhere(new Brackets(qb => {
+        qb.where('user.role = :admin', { admin: 'admin' })
+          .orWhere('user.role = :role', { role: role })
+      })).getOne()
+
+    if (role === 'admin' && !account.role) {
+      return null
+    }
     return account
   }
 }
