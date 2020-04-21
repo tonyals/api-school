@@ -85,8 +85,6 @@ describe('Account Postgres Repository', () => {
         password: 'any_password',
         accessToken: 'any_token'
       })
-      const user = await User.findOne({ accessToken: 'any_token' })
-      console.log(user)
       const account = await sut.loadByToken('any_token')
       expect(account).toBeTruthy()
       expect(account.id).toBeTruthy()

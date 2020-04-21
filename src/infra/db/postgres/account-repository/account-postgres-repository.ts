@@ -26,7 +26,6 @@ LoadAccountByEmailRepository, UpdateAccessTokenRepository, LoadAccountByTokenRep
   }
 
   async loadByToken (token: string, role?: string): Promise<AccountModel> {
-    // const account = await User.findOne({ accessToken: token })
     const account = await User.createQueryBuilder('user')
       .where('user.accessToken = :token', { token: token })
       .orWhere(new Brackets(qb => {
