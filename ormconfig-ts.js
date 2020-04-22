@@ -10,7 +10,7 @@ module.exports = [
     dropSchema: false,
     logging: false,
     entities: [
-      'dist/src/infra/db/entities/**/*.js'
+      'src/infra/db/entities/**/*.ts'
     ],
     migrations: [
       'src/migration/**/*.ts'

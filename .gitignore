@@ -1,4 +1,5 @@
 node_modules
+dist
 coverage
 tesconnection.txt
 sqlite_tests.sqlite
