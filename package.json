@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node dist/src/main/server.js",
+    "dev": "NODE_ENV=dev ts-node src/main/server.ts",
     "build": "rimraf dist && tsc",
     "test": "NODE_ENV=sqlite_tests jest --passWithNoTests --silent --noStackTrace --runInBand --detectOpenHandles",
     "test:verbose": "NODE_ENV=sqlite_tests jest --passWithNoTests --runInBand",
