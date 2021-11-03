@@ -54,6 +54,6 @@
     "pg": "^8.0.0",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.2.24",
-    "validator": "^13.0.0"
+    "validator": "^13.7.0"
   }
 }
